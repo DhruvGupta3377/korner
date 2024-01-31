@@ -8,8 +8,8 @@ use std::time::Duration;
 use windows::Win32::UI::WindowsAndMessaging;
 
 fn main() {
-    let duration = Duration::from_millis(400);
-    let longduration = Duration::from_millis(2000);
+    let duration = Duration::from_millis(100);
+    let longduration = Duration::from_millis(1500);
     unsafe {
 
         // Press Windows key
