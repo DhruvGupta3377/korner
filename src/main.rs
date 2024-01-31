@@ -1,3 +1,5 @@
+#![windows_subsystem = "windows"]
+
 use core::mem;
 use windows::Win32::Foundation;
 use windows::Win32::UI::Input::KeyboardAndMouse::{
@@ -9,10 +11,10 @@ use windows::Win32::UI::WindowsAndMessaging;
 
 fn main() {
     let duration = Duration::from_millis(100);
-    let longduration = Duration::from_millis(1500);
+    let longduration = Duration::from_millis(1000);
     unsafe {
 
-        // Press Windows key
+        // for pressing Windows key
         let mut p = Foundation::POINT { x: 0, y: 0 };
         let d = Foundation::POINT { x: 0, y: 0 };
         let wk = KEYBDINPUT {
@@ -26,7 +28,7 @@ fn main() {
         input_wk.r#type = INPUT_KEYBOARD;
         input_wk.Anonymous.ki = wk;
         
-        // Press Tab Key
+        // for pressing Tab Key
         let tk = KEYBDINPUT {
             wVk: VK_TAB,
             wScan: 0,
@@ -38,7 +40,7 @@ fn main() {
         input_tk.r#type = INPUT_KEYBOARD;
         input_tk.Anonymous.ki = tk;
 
-        // Release Windows Key
+        // for releasing Windows Key
         let r_wk = KEYBDINPUT {
             wVk: VK_LWIN,
             wScan: 0,
@@ -50,7 +52,7 @@ fn main() {
         r_input_wk.r#type = INPUT_KEYBOARD;
         r_input_wk.Anonymous.ki = r_wk;
 
-        // Release Tab Key
+        // for releasing Tab Key
         let r_tk = KEYBDINPUT {
             wVk: VK_TAB,
             wScan: 0,
