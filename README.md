@@ -1,5 +1,5 @@
 # Korner
-It is like Hot Corners but server only one purpose. 
+It is like Hot Corners but serve only one purpose. 
 Going to the upper left corner (0, 0) = Task View.
 
 # How To
