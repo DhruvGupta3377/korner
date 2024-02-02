@@ -9,9 +9,11 @@ use std::thread;
 use std::time::Duration;
 use windows::Win32::UI::WindowsAndMessaging;
 
+// use windows::Win32::UI::Shell::IS_FULLSCREEN;
+
 fn main() {
     let duration = Duration::from_millis(100);
-    let longduration = Duration::from_millis(1000);
+    let longduration = Duration::from_millis(500);
     unsafe {
 
         // for pressing Windows key
@@ -65,12 +67,19 @@ fn main() {
         r_input_tk.Anonymous.ki = r_tk;
         
         loop {
+            // println!("ok");
             WindowsAndMessaging::GetCursorPos(&mut p).expect("cant do it");
             thread::sleep(duration);
             if p == d {
-                SendInput(&[input_wk, input_tk], mem::size_of::<INPUT>() as i32);
-                SendInput(&[r_input_wk, r_input_tk], mem::size_of::<INPUT>() as i32);
-                thread::sleep(longduration);
+                SendInput(&[input_wk], mem::size_of::<INPUT>() as i32);
+                thread::sleep(Duration::from_millis(10));
+                SendInput(&[input_tk], mem::size_of::<INPUT>() as i32);
+                thread::sleep(Duration::from_millis(50));
+                SendInput(&[r_input_tk], mem::size_of::<INPUT>() as i32);
+                thread::sleep(Duration::from_millis(10));
+                SendInput(&[r_input_wk], mem::size_of::<INPUT>() as i32);
+                thread::sleep(longduration);    
+                // break;          
             }
         }
     }
